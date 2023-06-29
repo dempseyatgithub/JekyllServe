@@ -1,0 +1,140 @@
+{
+    "identifier": "net.tapas-software.JekyllServe",
+    "name": "Jekyll Serve",
+    "organization": "Tapas Software",
+    "description": "Runs jekyll serve, build and clean commands.",
+    "version": "1.0",
+    "categories": ["tasks"],
+    
+    "entitlements": {
+        "process": true
+    },
+    
+    "taskTemplates": {
+        "jekyllServe": {
+            "name": "Jekyll Serve",
+            "description": "Runs jekyll serve, build and clean commands.",
+            "image": "jekyll",
+            "actions": ["build", "run", "clean"],
+            "task": {
+                "command": "$ExtensionFolder/tasks.sh",
+                "args": [
+                ],
+                "env": {
+                    "USE_BUNDLE_EXEC": "$(Config:jekyllserve.use-bundle-exec)",
+                    "HOST": "$(Config:jekyllserve.host)",
+                    "PORT": "$(Config:jekyllserve.port)",
+                    "CUSTOM_ARGS": "$(Config:jekyllserve.custom-args)",
+                    "INCREMENTAL": "$(Config:jekyllserve.incremental)",
+                    "OPEN_URL":  "$(Config:jekyllserve.open-url)",
+                    "FUTURE":  "$(Config:jekyllserve.future)",
+                    "DRAFTS":  "$(Config:jekyllserve.drafts)",
+                    "UNPUBLISHED":  "$(Config:jekyllserve.unpublished)",
+                    "VERBOSE":  "$(Config:jekyllserve.verbose)",
+                    "STRICT_FRONT_MATTER":  "$(Config:jekyllserve.strict-front-matter)",
+                    "SAFE":  "$(Config:jekyllserve.safe)",
+                    "TRACE":  "$(Config:jekyllserve.trace)",
+                },
+                "persistent": false,
+                "autosaveEditors": false
+            },
+            "config": [
+                {
+                    "key": "jekyllserve.incremental",
+                    "title": "Incremental build",
+                    "description": "Enable incremental builds.",
+                    "type": "boolean",
+                    "default": true
+                },
+                {
+                    "key": "jekyllserve.future",
+                    "title": "Publish future posts",
+                    "description": "Publishes posts with a future date.",
+                    "type": "boolean",
+                    "default": false
+                },
+                {
+                    "key": "jekyllserve.drafts",
+                    "title": "Include draft posts",
+                    "description": "Includes posts in the _drafts folder.",
+                    "type": "boolean",
+                    "default": false
+                },
+                {
+                    "key": "jekyllserve.unpublished",
+                    "title": "Include unpublished posts",
+                    "description": "Include posts marked as unpublished.",
+                    "type": "boolean",
+                    "default": false
+                },
+                {
+                    "key": "jekyllserve.verbose",
+                    "title": "Verbose",
+                    "description": "Print verbose output.",
+                    "type": "boolean",
+                    "default": false
+                },
+                {
+                    "key": "jekyllserve.strict-front-matter",
+                    "title": "Strict Front Matter",
+                    "description": "Fail if errors are present in front matter.",
+                    "type": "boolean",
+                    "default": false
+                },
+                {
+                    "key": "jekyllserve.safe",
+                    "title": "Safe",
+                    "description": "Disable non-whitelisted plugins, caching to disk, and ignore symbolic links.",
+                    "type": "boolean",
+                    "default": false
+                },
+                {
+                    "key": "jekyllserve.trace",
+                    "title": "Trace",
+                    "description": "Show the full backtrace when an error occurs.",
+                    "type": "boolean",
+                    "default": false
+                },
+                {
+                    "key": "jekyllserve.use-bundle-exec",
+                    "title": "Use 'bundle exec'",
+                    "description": "Runs jekyll commands using 'bundle exec'.",
+                    "type": "boolean",
+                    "default": true
+                },
+                {
+                    "title": "Run Options",
+                    "type": "section",
+                    "children": [
+                    {
+                        "key": "jekyllserve.host",
+                        "title": "Host",
+                        "type": "string",
+                        "placeholder": "localhost",
+                    },
+                    {
+                        "key": "jekyllserve.port",
+                        "title": "Port",
+                        "type": "number",
+                        "placeholder": "4000",
+                        "min": 1,
+                        "max": 65535
+                    },
+                    {
+                        "key": "jekyllserve.open-url",
+                        "title": "Launch in browser",
+                        "type": "boolean",
+                        "default": false
+                    }
+                    ]
+                },
+                {
+                    "key": "jekyllserve.custom-args",
+                    "title": "Additional Arguments",
+                    "description": "Custom arguments to pass to example tool.",
+                    "type": "string"
+                }
+            ]
+        }
+    }
+}
