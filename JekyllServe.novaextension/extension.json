@@ -3,6 +3,8 @@
     "name": "Jekyll Serve",
     "organization": "Tapas Software",
     "description": "Runs jekyll serve, build and clean commands.",
+    "repository": "https://github.com/dempseyatgithub/JekyllServe",
+    "bugs": "https://github.com/dempseyatgithub/JekyllServe/issues",
     "version": "1.0",
     "categories": ["tasks"],
     
@@ -13,7 +15,7 @@
     "taskTemplates": {
         "jekyllServe": {
             "name": "Jekyll Serve",
-            "description": "Runs jekyll serve, build and clean commands.",
+            "description": "Runs jekyll serve, build and clean commands as Nova tasks.",
             "image": "jekyll",
             "actions": ["build", "run", "clean"],
             "task": {
@@ -33,7 +35,7 @@
                     "VERBOSE":  "$(Config:jekyllserve.verbose)",
                     "STRICT_FRONT_MATTER":  "$(Config:jekyllserve.strict-front-matter)",
                     "SAFE":  "$(Config:jekyllserve.safe)",
-                    "TRACE":  "$(Config:jekyllserve.trace)",
+                    "TRACE":  "$(Config:jekyllserve.trace)"
                 },
                 "persistent": false,
                 "autosaveEditors": false
@@ -110,7 +112,7 @@
                         "key": "jekyllserve.host",
                         "title": "Host",
                         "type": "string",
-                        "placeholder": "localhost",
+                        "placeholder": "localhost"
                     },
                     {
                         "key": "jekyllserve.port",
@@ -131,7 +133,7 @@
                 {
                     "key": "jekyllserve.custom-args",
                     "title": "Additional Arguments",
-                    "description": "Custom arguments to pass to example tool.",
+                    "description": "Custom arguments to pass to jekyll serve.",
                     "type": "string"
                 }
             ]
