@@ -42,11 +42,11 @@
             },
             "config": [
                 {
-                    "key": "jekyllserve.incremental",
-                    "title": "Incremental build",
-                    "description": "Enable incremental builds.",
-                    "type": "boolean",
-                    "default": true
+                "key": "jekyllserve.use-bundle-exec",
+                "title": "Use 'bundle exec'",
+                "description": "Runs jekyll commands using 'bundle exec'.",
+                "type": "boolean",
+                "default": true
                 },
                 {
                     "key": "jekyllserve.future",
@@ -98,13 +98,6 @@
                     "default": false
                 },
                 {
-                    "key": "jekyllserve.use-bundle-exec",
-                    "title": "Use 'bundle exec'",
-                    "description": "Runs jekyll commands using 'bundle exec'.",
-                    "type": "boolean",
-                    "default": true
-                },
-                {
                     "title": "Run Options",
                     "type": "section",
                     "children": [
@@ -121,6 +114,13 @@
                         "placeholder": "4000",
                         "min": 1,
                         "max": 65535
+                    },
+                    {
+                        "key": "jekyllserve.incremental",
+                        "title": "Incremental build",
+                        "description": "Enable incremental builds.",
+                        "type": "boolean",
+                        "default": false
                     },
                     {
                         "key": "jekyllserve.open-url",
