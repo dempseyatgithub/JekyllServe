@@ -5,7 +5,7 @@
     "description": "Runs jekyll serve, build and clean commands.",
     "repository": "https://github.com/dempseyatgithub/JekyllServe",
     "bugs": "https://github.com/dempseyatgithub/JekyllServe/issues",
-    "version": "1.0",
+    "version": "1.1",
     "license": "MIT",
     "categories": ["tasks"],
     

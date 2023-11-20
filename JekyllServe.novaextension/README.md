@@ -45,6 +45,15 @@ You can find the local hostname of your Mac in the Sharing section of System Set
 #### Port
 If you edit multiple Jekyll site projects, setting a different port for each allows you to easily serve multiple sites simultaneously without conflicting ports.
 
+## Ruby Version
+Jekyll projects often include a `.ruby-version` file to specify the version of ruby to be used. Gems used by the project, including Jekyll itself, are installed for a particular version of ruby.
+
+JekyllServe uses an included copy of chruby to run tasks using the specified version of ruby and to ensure the correct set of gems is available.
+
+The standard ruby installation paths used by common ruby version managers, chruby, RVM, rbenv, and rbfu, are searched for ruby versions if present.
+
+Since Jekyll projects typically do require a particular version of ruby, adding a `.ruby-version` file is recommended for use with JekyllServe.
+
 ----
 ### Acknowledgements
 
