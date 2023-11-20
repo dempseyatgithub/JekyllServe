@@ -35,7 +35,8 @@
                     "JKLSRV_VERBOSE":  "$(Config:jekyllserve.verbose)",
                     "JKLSRV_STRICT_FRONT_MATTER":  "$(Config:jekyllserve.strict-front-matter)",
                     "JKLSRV_SAFE":  "$(Config:jekyllserve.safe)",
-                    "JKLSRV_TRACE":  "$(Config:jekyllserve.trace)"
+                    "JKLSRV_TRACE":  "$(Config:jekyllserve.trace)",
+                    "JKLSRV_EXTENSION_PATH": "$ExtensionFolder"
                 },
                 "persistent": false,
                 "autosaveEditors": false

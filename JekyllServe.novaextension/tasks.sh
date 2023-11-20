@@ -1,5 +1,8 @@
 #!/bin/sh
 
+source "$JKLSRV_EXTENSION_PATH/chruby/chruby.sh"
+source "$JKLSRV_EXTENSION_PATH/chruby/auto.sh"
+
 if [ "$JKLSRV_USE_BUNDLE_EXEC" = "1" ] ; then
 	BUNDLE_EXEC="bundle exec"
 fi
