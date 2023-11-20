@@ -1,73 +1,73 @@
 #!/bin/sh
 
-if [ "$USE_BUNDLE_EXEC" = "1" ] ; then
+if [ "$JKLSRV_USE_BUNDLE_EXEC" = "1" ] ; then
 	BUNDLE_EXEC="bundle exec"
 fi
 
-if [ "$INCREMENTAL" = "1" ] ; then
+if [ "$JKLSRV_INCREMENTAL" = "1" ] ; then
 	INCREMENTAL_FLAG="--incremental"
 fi
 
-if [ "$OPEN_URL" = "1" ] ; then
+if [ "$JKLSRV_OPEN_URL" = "1" ] ; then
 	OPEN_URL_FLAG="--open-url"
 fi
 
-if [ "$FUTURE" = "1" ] ; then
+if [ "$JKLSRV_FUTURE" = "1" ] ; then
 	FUTURE_FLAG="--future"
 fi
 
-if [ "$DRAFTS" = "1" ] ; then
+if [ "$JKLSRV_DRAFTS" = "1" ] ; then
 	DRAFTS_FLAG="--drafts"
 fi
 
-if [ "$UNPUBLISHED" = "1" ] ; then
+if [ "$JKLSRV_UNPUBLISHED" = "1" ] ; then
 	UNPUBLISHED_FLAG="--unpublished"
 fi
 
-if [ "$VERBOSE" = "1" ] ; then
+if [ "$JKLSRV_VERBOSE" = "1" ] ; then
 	VERBOSE_FLAG="--verbose"
 	echo "$VERBOSE_FLAG"
 fi
 
-if [ "$STRICT_FRONT_MATTER" = "1" ] ; then
+if [ "$JKLSRV_STRICT_FRONT_MATTER" = "1" ] ; then
 	STRICT_FRONT_MATTER_FLAG="--strict_front_matter"
 fi
 
-if [ "$SAFE" = "1" ] ; then
+if [ "$JKLSRV_SAFE" = "1" ] ; then
 	SAFE_FLAG="--safe"
 fi
 
-if [ "$TRACE" = "1" ] ; then
+if [ "$JKLSRV_TRACE" = "1" ] ; then
 	TRACE_FLAG="--trace"
 fi
 
-if [ -n "$HOST" ] ; then
-	if [[ $HOST = *" "* ]]; then
-  		echo "WARNING: Hostname '"$HOST"' contains spaces. Using localhost instead."
+if [ -n "$JKLSRV_HOST" ] ; then
+	if [[ $JKLSRV_HOST = *" "* ]]; then
+  		echo "WARNING: Hostname '"$JKLSRV_HOST"' contains spaces. Using localhost instead."
 	else
 		HOST_FLAG="--host"
-		HOST_VALUE=$HOST
+		HOST_VALUE=$JKLSRV_HOST
 	fi
 fi
 
-if [ -n "$PORT" ] ; then
-	if [[ $PORT = *" "* ]]; then
-  		echo "WARNING: Port '"$PORT"' contains spaces. Using port 4000 instead."
+if [ -n "$JKLSRV_PORT" ] ; then
+	if [[ $JKLSRV_PORT = *" "* ]]; then
+  		echo "WARNING: Port '"$JKLSRV_PORT"' contains spaces. Using port 4000 instead."
 	else
 		PORT_FLAG="--port"
-		PORT_VALUE=$PORT
+		PORT_VALUE=$JKLSRV_PORT
 	fi
 fi
 
 if [ "$NOVA_TASK_NAME" = "run" ] ; then
-	$BUNDLE_EXEC jekyll serve $HOST_FLAG $HOST_VALUE $PORT_FLAG $PORT_VALUE $INCREMENTAL_FLAG $OPEN_URL_FLAG $FUTURE_FLAG $DRAFTS_FLAG $UNPUBLISHED_FLAG $VERBOSE_FLAG $STRICT_FRONT_MATTER_FLAG $SAFE_FLAG $TRACE_FLAG $CUSTOM_ARGS
+	$BUNDLE_EXEC jekyll serve $HOST_FLAG $HOST_VALUE $PORT_FLAG $PORT_VALUE $INCREMENTAL_FLAG $OPEN_URL_FLAG $FUTURE_FLAG $DRAFTS_FLAG $UNPUBLISHED_FLAG $VERBOSE_FLAG $STRICT_FRONT_MATTER_FLAG $SAFE_FLAG $TRACE_FLAG $JKLSRV_CUSTOM_ARGS
 fi
 
 if [ "$NOVA_TASK_NAME" = "build" ] ; then
-	$BUNDLE_EXEC jekyll build $INCREMENTAL_FLAG $FUTURE_FLAG $DRAFTS_FLAG $UNPUBLISHED_FLAG $VERBOSE_FLAG $STRICT_FRONT_MATTER_FLAG $SAFE_FLAG $TRACE_FLAG $CUSTOM_ARGS
+	$BUNDLE_EXEC jekyll build $INCREMENTAL_FLAG $FUTURE_FLAG $DRAFTS_FLAG $UNPUBLISHED_FLAG $VERBOSE_FLAG $STRICT_FRONT_MATTER_FLAG $SAFE_FLAG $TRACE_FLAG $JKLSRV_CUSTOM_ARGS
 fi
 
 if [ "$NOVA_TASK_NAME" = "clean" ] ; then
-	$BUNDLE_EXEC jekyll clean $CUSTOM_ARGS
+	$BUNDLE_EXEC jekyll clean $JKLSRV_CUSTOM_ARGS
 fi
 
