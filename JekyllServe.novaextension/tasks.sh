@@ -1,7 +1,12 @@
 #!/bin/sh
 
+# Include chruby to switch to ruby version in the .ruby-version file
+
 source "$JKLSRV_EXTENSION_PATH/chruby/chruby.sh"
 source "$JKLSRV_EXTENSION_PATH/chruby/auto.sh"
+
+
+# Map incoming environment variables to task arguments
 
 if [ "$JKLSRV_USE_BUNDLE_EXEC" = "1" ] ; then
 	BUNDLE_EXEC="bundle exec"
@@ -61,6 +66,9 @@ if [ -n "$JKLSRV_PORT" ] ; then
 		PORT_VALUE=$JKLSRV_PORT
 	fi
 fi
+
+
+# Run the selected task
 
 if [ "$NOVA_TASK_NAME" = "run" ] ; then
 	$BUNDLE_EXEC jekyll serve $HOST_FLAG $HOST_VALUE $PORT_FLAG $PORT_VALUE $INCREMENTAL_FLAG $OPEN_URL_FLAG $FUTURE_FLAG $DRAFTS_FLAG $UNPUBLISHED_FLAG $VERBOSE_FLAG $STRICT_FRONT_MATTER_FLAG $SAFE_FLAG $TRACE_FLAG $JKLSRV_CUSTOM_ARGS
