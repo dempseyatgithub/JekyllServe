@@ -1,12 +1,32 @@
 #!/bin/sh
 
-# Include chruby to switch to ruby version in the .ruby-version file
+# 1. Use chruby to switch to ruby version in the .ruby-version file
 
+# Include chruby.sh
 source "$JKLSRV_EXTENSION_PATH/chruby/chruby.sh"
+
+# Add ruby paths of common ruby version managers, if present
+JKLSRV_RVM_RUBIES_PATH=~/.rvm/rubies # RVM
+if [ -d "JKLSRV_RVM_RUBIES_PATH" ] ; then
+	RUBIES+=("JKLSRV_RVM_RUBIES_PATH"/*)
+fi
+
+JKLSRV_RBENV_RUBIES_PATH=~/.rbenv/versions # rbenv
+if [ -d "JKLSRV_RBENV_RUBIES_PATH" ] ; then
+	RUBIES+=("JKLSRV_RBENV_RUBIES_PATH"/*)
+fi
+
+JKLSRV_RBFU_RUBIES_PATH=~/.rbfu/rubies # rbfu
+if [ -d "JKLSRV_RBFU_RUBIES_PATH" ] ; then
+	RUBIES+=("JKLSRV_RBFU_RUBIES_PATH"/*)
+fi
+
+# Include auto.sh *after* setting up RUBIES variable
+# This will allow the version to automatically update
 source "$JKLSRV_EXTENSION_PATH/chruby/auto.sh"
 
 
-# Map incoming environment variables to task arguments
+# 2. Map incoming environment variables to task arguments
 
 if [ "$JKLSRV_USE_BUNDLE_EXEC" = "1" ] ; then
 	BUNDLE_EXEC="bundle exec"
@@ -68,7 +88,7 @@ if [ -n "$JKLSRV_PORT" ] ; then
 fi
 
 
-# Run the selected task
+# 3. Run the selected task
 
 if [ "$NOVA_TASK_NAME" = "run" ] ; then
 	$BUNDLE_EXEC jekyll serve $HOST_FLAG $HOST_VALUE $PORT_FLAG $PORT_VALUE $INCREMENTAL_FLAG $OPEN_URL_FLAG $FUTURE_FLAG $DRAFTS_FLAG $UNPUBLISHED_FLAG $VERBOSE_FLAG $STRICT_FRONT_MATTER_FLAG $SAFE_FLAG $TRACE_FLAG $JKLSRV_CUSTOM_ARGS
