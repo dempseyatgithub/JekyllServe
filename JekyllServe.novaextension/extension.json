@@ -6,6 +6,7 @@
     "repository": "https://github.com/dempseyatgithub/JekyllServe",
     "bugs": "https://github.com/dempseyatgithub/JekyllServe/issues",
     "version": "1.0",
+    "license": "MIT",
     "categories": ["tasks"],
     
     "entitlements": {
